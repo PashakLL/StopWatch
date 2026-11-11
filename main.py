@@ -1,2 +1,6 @@
-print(95 // 60) 
-print(95 % 60)
+import time
+
+for step in range(3):
+    print("Шаг", step)
+    time.sleep(2)
+    
