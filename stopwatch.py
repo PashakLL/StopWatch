@@ -1,25 +1,19 @@
 import time
 
-
-
-
-
-input("Нажмите enter")
-begin = time.time()
-#input("Нажмите enter")
+ 
+def format_time(total_seconds):
+    minute = int(total_seconds // 60)
+    sec = int(total_seconds % 60)
+    return f"{minute:02}:{sec:02}"
 
 try:
+    begin = time.time()
     while True:
         time.sleep(1)
         tik = int(time.time() - begin)
-        print(tik)
+        print(f"Прошло {format_time(tik)}")
 except KeyboardInterrupt:
-    print("Остановлено")
- 
+     print("Остановлено")
 
-end = time.time()
-period = round(end - begin,2)
-minute = int(period // 60)
-sec = int(period % 60)
-
-print(f"Прошло {minute} минут {sec} секунд")
+end = time.time() - begin
+print(f"Прошло {format_time(end)}")
