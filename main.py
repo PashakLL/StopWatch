@@ -1,6 +1,3 @@
-import time
-
-for step in range(3):
-    print("Шаг", step)
-    time.sleep(2)
-    
+unit = 1  # 1 для проверки, 60 для настоящей работы
+price_in_cents = 5
+print(price_in_cents * unit)
