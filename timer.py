@@ -14,7 +14,7 @@ templates = {
     'Глубокая работа': (90, 20, 1)
 }
 
-seconds_in_minute = 60
+seconds_in_minute = 1
 
 
 def format_time(total_seconds):
@@ -25,9 +25,9 @@ def format_time(total_seconds):
 def countdown(total_seconds):
     for step in range(0, total_seconds):
         tik = int(total_seconds - step)
-        print(f"Осталось {format_time(tik)}")
+        print(f"Осталось {format_time(tik)}", end="\r", flush=True)
         time.sleep(1)
-    print("Время вышло")
+    print(f"Время вышло\033[K")
 
 def timer_pomodoro(work, rest, cycles):
     for number in range(1, cycles + 1):
@@ -60,4 +60,4 @@ try:
 except ValueError:
     print("засечь буквы невозможно")
 except KeyboardInterrupt:
-    print("Остановлено")
+    print("Остановлено\033[K")
