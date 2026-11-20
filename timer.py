@@ -27,14 +27,14 @@ def countdown(total_seconds):
         tik = int(total_seconds - step)
         print(f"Осталось {format_time(tik)}", end="\r", flush=True)
         time.sleep(1)
-    print(f"Время вышло\033[K")
+    print("\033[36mВремя вышло\033[K\033[0m")
 
 def timer_pomodoro(work, rest, cycles):
     for number in range(1, cycles + 1):
         print("Подход", number, "из", cycles)
-        print("Работа")
+        print("\033[31mРабота\033[0m")
         countdown(work)
-        print("Отдых")
+        print("\033[32mОтдых\033[0m")
         countdown(rest)
 
 choice = input("Введите название шаблона? ")
