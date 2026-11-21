@@ -10,11 +10,12 @@ templates = {
     'Классический': (25, 5, 4),
     # Для программирования, чтения, написания текстов и учёбы
     'Удлиненный': (50, 10, 2),
-    # Для сложных проектов, разработки, творчества и задач, требующих погружения
+    # Для сложных проектов, разработки, творчества и задач,
+    # требующих погружения
     'Глубокая работа': (90, 20, 1)
 }
 
-seconds_in_minute = 1
+seconds_in_minute = 60
 
 
 def format_time(total_seconds):
@@ -22,12 +23,17 @@ def format_time(total_seconds):
     sec = int(total_seconds % 60)
     return f"{minute:02}:{sec:02}"
 
+
 def countdown(total_seconds):
     for step in range(0, total_seconds):
         tik = int(total_seconds - step)
-        print(f"Осталось {format_time(tik)}", end="\r", flush=True)
+        segment = step * 10 // total_seconds
+        bar = f"[{'#' * segment}{'-' * (10 - segment)}]"
+        line = f"{bar} Осталось {format_time(tik)}"
+        print(line, end="\r", flush=True)
         time.sleep(1)
     print("\033[36mВремя вышло\033[K\033[0m")
+
 
 def timer_pomodoro(work, rest, cycles):
     for number in range(1, cycles + 1):
@@ -36,6 +42,7 @@ def timer_pomodoro(work, rest, cycles):
         countdown(work)
         print("\033[32mОтдых\033[0m")
         countdown(rest)
+
 
 choice = input("Введите название шаблона? ")
 cycles = 2
